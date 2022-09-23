@@ -1,7 +1,7 @@
-![context-logo-blue-54eab27a7cb3dc7e4ebce9eaf84a121a6a08e133948a896c2e64ef61ba651521 (1)](https://user-images.githubusercontent.com/17050237/190923868-d05abe6d-1b97-403c-96ed-054437e5fae0.png)
+
 
 <h1 align="center">
-
+  ![context-logo-blue-54eab27a7cb3dc7e4ebce9eaf84a121a6a08e133948a896c2e64ef61ba651521 (1)](https://user-images.githubusercontent.com/17050237/190923868-d05abe6d-1b97-403c-96ed-054437e5fae0.png)
   [Con[text] Website](https://team50.herokuapp.com/)
   
 </h1>
