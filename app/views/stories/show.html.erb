@@ -1,0 +1,91 @@
+<div class="flex justify-center mt-4 min-h-[625px] max-h-[625px]">
+  <div class=" flex flex-col border-2 border-blue md:flex-row w-9/12 mt-4 rounded-lg bg-white shadow-lg">
+    <%= image_tag "#{@story.photo}", class: "w-full md:h-auto object-cover md:w-1/2 rounded-t-lg md:rounded-none md:rounded-l-lg" %>
+
+    <div class="p-6 flex flex-col justify-start">
+      <h5 class="text-gray-900 text-xl font-medium mb-4 text-[32px]"><%= "#{@story.name}" %></h5>
+      <%= turbo_frame_tag @story do %>
+        <div data-controller="sentence-loading">
+        <% story = @story.sentences.first(10) %>
+          <%= render "story", story: @story %>
+          <div class="markers_container flex justify-between">
+            <p><strong>Correct answers:</strong> <span id="counter">0</span><span id="total">/0</span></p>
+            <div class="relative" data-controller="check" id="marker" hidden>
+              <div class="pop-up shadow-lg border-blue rounded-lg">
+                <div class='content-center'>
+                  <p class='text-[28px] pl-1 pt-2'>Did you translate it correctly?</p>
+                </div>
+                <div>
+                  <button id="correct" data-action="click->check#correct"><%= image_tag "published.png", class:'w-10'%></button>
+                  <button id="wrong" data-action="click->check#wrong"><%= image_tag "unpublished.png", class:'w-10' %></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-controller="check" class='mt-12 flex justify-end'>
+          <span data-action="click->check#reset"><%= link_to "Next",story_next_path(@story), class:"button bg-teal"%></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="w-9/12 m-auto mt-6 bg-light-teal p-6">
+  <h3 class='mb-2'>Need help?</h3>
+  <p>1. Read along with your child. Some of the English text will be randomly translated to Spanish. <p>
+  <p>2. If your child translates the phrase to Spanish correctly, select the tick that pops-up. </p>
+  <p>3. The score will be recorded. Read again or choose another book from the library. </p>
+</div>
+
+<!--<div id="default-carousel" class="h-[500px] relative w-8/12 m-auto border-blue border-2 rounded-lg bg-white shadow-lg mt-12" data-carousel="static">
+
+    <div class="relative h-full overflow-hidden rounded-lg">
+        <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0 z-20" data-carousel-item="">
+          <div class='flex flex-row justify-center	'>
+            <div class="w-6/12 bg-center bg-cover rounded-xl bg-ruby-rails  bg-white"></div>
+            <div class='w-1/2  bg-white pl-6 py-6 pr-14'>
+              <p class=""><%= render "story", story: @story %></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full z-10" data-carousel-item="">
+          <div class='flex flex-row justify-center	'>
+            <div class="w-6/12 bg-center bg-cover rounded-xl bg-ruby-rails  bg-white"></div>
+            <div class='w-1/2 bg-white pl-6 py-6 pr-14'>
+              <p><%= render "story", story: @story %></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="duration-700 ease-in-out absolute inset-0 transition-all transform -translate-x-full z-10" data-carousel-item="">
+          <div class='flex flex-row justify-center	'>
+            <div class="w-6/12 bg-center bg-cover rounded-xl bg-ruby-rails  bg-white"></div>
+            <div class='w-1/2  bg-white pl-6 py-6 pr-14'>
+              <p><%= render "story", story: @story %></p>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="absolute z-30 flex space-x-3 -translate-x-1/2 -bottom-[60px] left-1/2">
+        <button type="button" class="border-blue border-3 text-blue p-1 rounded-sm bg-blue dark:bg-gray-800" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0">1</button>
+        <button type="button" class="border-blue border-3 text-blue p-1 rounded-sm bg-blue dark:bg-gray-800/50 hover:bg-blue dark:hover:bg-gray-800" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1">2</button>
+        <button type="button" class="border-blue border-3 text-blue p-1  rounded-sm bg-blue dark:bg-gray-800/50 hover:bg-blue dark:hover:bg-gray-800" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2">3</button>
+    </div>
+
+    <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev="">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-blue dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next="">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-blue dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+-->

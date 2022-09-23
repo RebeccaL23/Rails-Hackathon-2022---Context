@@ -1,0 +1,51 @@
+<div class="mt-2 mb-20 ">
+  <div class="container m-auto h-auto">
+    <div class="absolute w-1/3 mt-12">
+      <h3 class="text-[#ACACAC] my-2">Learn languages through</h3>
+      <%= image_tag "context-logo-blue.png", class:"w-48 my-4" %>
+      <h2 class="my-4">For children aged 7 and up, who are learning to read in English and Spanish</h2>
+      <%= link_to "Start Reading", stories_path, class: "button w-auto my-2" %>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="w-6/12 bg-light-blue p-6 mr-2 rounded-3xl"></div>
+    <div class="w-6/12 h-[450px] bg-center	 bg-cover rounded-xl bg-hero"></div>
+  </div>
+  <%# <%= image_tag "hero.jpeg", class:"basis-3/5 h-60 bg-cover " %>
+</div>
+
+<div class="how-it-works m-auto container mb-20">
+  <h1>How it works</h1>
+  <div class='flex justify-center'>
+    <div class='basis-1/3 m-6'>
+      <%= image_tag "orange-blob.png", class:'w-50 ' %>
+      <h2 class="-mt-32">1. Browse the library of books</h2>
+    </div>
+    <div class='basis-1/3 m-6'>
+      <%= image_tag "blue-blob.png", class:'w-50 ' %>
+      <h2 class="-mt-32">2. Parts of the book will be randomly translated to Spanish</h2>
+    </div>
+    <div class='basis-1/3 m-6'>
+      <%= image_tag "pink-blob.png", class:'w-50 ' %>
+      <h2 class="-mt-32">3. Read along and keep score on the translations you get correct</h2>
+    </div>
+  </div>
+</div>
+
+<div class="flex m-auto container ">
+  <div class="flex m-auto min-h-[680px]">
+    <%# <%= image_tag "child-reading.png" %>
+    <div class="w-full  ml-12 bg-cover rounded-xl bg-child-reading"></div>
+    <div class="flex-col">
+      <h1 class=" -ml-40 my-8">Studies show that Context Clues are an effective Vocabulary Learning Technique</h1>
+      <h3 class=" -ml-20 my-8"><p class='text-blue'>What are Context Clues?<p>Context clues are hints found within a sentence, paragraph, or passage that a reader can use to understand the meanings of new or unfamiliar words.</h3>
+      <div class="w-5/6 newsletter bg-teal rounded-3xl px-10 py-6 -ml-20 my-8">
+        <p class="mb-2">Sign up to our newsletter for more about the science behind learning languages, recently added books and feature updates</p>
+        <form class="p-1 bg-white flex justify-end">
+          <input type="email" id="email" name="email" class="w-full" >
+          <input type="submit" value="Sign up" class="button">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
